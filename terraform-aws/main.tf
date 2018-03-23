@@ -4,7 +4,7 @@ provider "aws" {
 
 resource "random_string" "vm-login-password" {
   length = 16
-  special = true
+  special = false
   override_special = "!@#%&-_"
 }
 

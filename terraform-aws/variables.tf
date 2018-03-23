@@ -5,36 +5,38 @@ variable "es_cluster" {
 
 variable "aws_region" {
   type = "string"
+  default = "us-east-1"
 }
 
 variable "vpc_id" {
   description = "VPC ID to create the Elasticsearch cluster in"
   type = "string"
+  default = "vpc-bebe3fc5"
 }
 
 variable "availability_zones" {
   type = "list"
   description = "AWS region to launch servers; if not set the available zones will be detected automatically"
-  default = []
+  default = ["us-east-1b", "us-east-1a"]
 }
 
 variable "key_name" {
   description = "Key name to be used with the launched EC2 instances."
-  default = "elasticsearch"
+  default = "yumfog"
 }
 
 variable "environment" {
-  default = "default"
+  default = "elasticsearch"
 }
 
 variable "data_instance_type" {
   type = "string"
-  default = "c5.2xlarge"
+  default = "t2.medium"
 }
 
 variable "master_instance_type" {
   type = "string"
-  default = "c5.large"
+  default = "t2.small"
 }
 
 variable "elasticsearch_volume_size" {
@@ -89,13 +91,13 @@ variable "monitoring_enabled" {
 
 # client nodes have nginx installed on them, these credentials are used for basic auth
 variable "client_user" {
-  default = "exampleuser"
+  default = "yumfog"
 }
 
 variable "public_facing" {
   description = "Whether or not the created cluster should be accessible from the public internet"
   type = "string"
-  default = "true"
+  default = "false"
 }
 
 # the ability to add additional existing security groups. In our case
